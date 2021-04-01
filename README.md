@@ -82,3 +82,10 @@ model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accur
 -----
 1. 명사가 아닌 조사, 동사등을 완벽히 걸러내지 못했다.
 2. 각 카테고리에 학습 시킬 기사의 개수를 통일해야 하는데, 갯수를 통일하지 않았다.
+
+참고
+------
+- 책
+    - [모두의 딥러닝](http://www.yes24.com/Product/Goods/86611190)
+    - [케라스 창시자에게 배우는 딥러닝](http://www.yes24.com/Product/Goods/65050162)
+- 그밖에 여러 구글 검색 결과
