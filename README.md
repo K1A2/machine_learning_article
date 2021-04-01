@@ -34,11 +34,51 @@
 
 학습 과정
 -----
+[Classfy.py 참고](https://github.com/K1A2/machine_learning_article/blob/main/Classfy.py)
+
+- 단어 저장 csv와 카테고리 분류 csv를 모두 가져와 numpy로 백터화 시킴
+```python
+f = open(os.getcwd() + "/set/allCategores.csv", 'r', encoding='utf-8')
+yy = csv.reader(f)
+Y = []
+for l in yy:
+    l = list(map(int, l))
+    Y.append(l)
+f.close()
+
+f = open(os.getcwd() + "/set/allArticles.csv", 'r', encoding='utf-8')
+xx = csv.reader(f)
+X = list()
+counts = dict()
+for l in xx:
+    l = list(map(int, l))
+    l.sort(reverse=True)
+    X.append(l)
+    count = len(l)
+    if count in counts:
+        counts[count] += 1
+    else:
+        counts[count] = 1
+f.close()
+counts = sorted(counts.items())
+
+X = numpy.array(X)
+Y = numpy.array(Y)
+Y = Y[0, :]
+```
 - Keras에 LSTM을 이용
 ```python
 model = Sequential()
-model.add(Embedding(wordsCount + 1, maxlen, input_length=maxlen))
-model.add(LSTM(maxlen, activation='tanh'))
+model.add(Embedding(317424, i, input_length=i))
+model.add(LSTM(i, activation='tanh'))
 model.add(Dense(6, activation='softmax'))
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 ```
+완성된 모델
+-----
+[모델](https://drive.google.com/drive/folders/1aBBaMmJu1x1cRdzV0nz_m8NIsW2sRZg9?usp=sharing)
+
+아쉬운점
+-----
+1. 명사가 아닌 조사, 동사등을 완벽히 걸러내지 못했다.
+2. 각 카테고리에 학습 시킬 기사의 개수를 통일해야 하는데, 갯수를 통일하지 않았다.
