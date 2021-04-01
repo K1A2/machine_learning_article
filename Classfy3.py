@@ -1,8 +1,3 @@
-import plaidml.keras
-
-plaidml.keras.install_backend()
-
-import keras
 from keras.preprocessing import sequence
 from sklearn.model_selection import train_test_split
 from keras.utils import np_utils

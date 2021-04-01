@@ -47,7 +47,7 @@ next(ww)
 wordsCount = max(list(map(int, next(ww))))
 
 model = Sequential()
-# model.add(Embedding(wordsCount + 1, maxlen, input_length=maxlen))
+model.add(Embedding(wordsCount + 1, maxlen, input_length=maxlen))
 model.add(LSTM(maxlen, activation='tanh'))
 model.add(Dense(6, activation='softmax'))
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])

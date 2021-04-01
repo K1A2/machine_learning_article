@@ -58,10 +58,11 @@ print(len(X_test), X_test.shape, len(x))
 print(len(Y_test), Y_test.shape, len(y))
 
 model = Sequential()
-model.add(Dense())
-print('modeling complete')
-
+model.add(Embedding(317424, i, input_length=i))
+model.add(LSTM(i, activation='tanh'))
+model.add(Dense(6, activation='softmax'))
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+print('modeling complete')
 
 history = model.fit(X_train, Y_train, batch_size=1000, epochs=5, validation_data=(X_test, Y_test))
 
